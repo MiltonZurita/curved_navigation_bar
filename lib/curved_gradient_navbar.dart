@@ -148,12 +148,17 @@ class CurvedGradientNavbarState extends State<CurvedGradientNavbar>
                 height: 100.0,
                 child: Row(
                     children: widget.items.map((item) {
+                  final index = widget.items.indexOf(item);
                   return NavButton(
                     onTap: _buttonTap,
                     position: _pos,
                     length: _length,
-                    index: widget.items.indexOf(item),
-                    child: Center(child: item),
+                    index: index,
+                    child: InkWell(
+                        onTap: () => _buttonTap(index),
+                        child: Center(
+                          child: item,
+                        )),
                   );
                 }).toList())),
           ),
