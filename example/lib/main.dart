@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:curved_gradient_navbar/curved_gradient_navbar.dart';
 
 void main() => runApp(MaterialApp(home: BottomNavBar()));
 
@@ -10,12 +10,12 @@ class BottomNavBar extends StatefulWidget {
 
 class _BottomNavBarState extends State<BottomNavBar> {
   int _page = 0;
-  GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
+  GlobalKey<CurvedGradientNavbarState> _bottomNavigationKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        bottomNavigationBar: CurvedNavigationBar(
+        bottomNavigationBar: CurvedGradientNavbar(
           key: _bottomNavigationKey,
           index: 0,
           height: 60.0,
@@ -48,7 +48,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                 ElevatedButton(
                   child: Text('Go To Page of index 1'),
                   onPressed: () {
-                    final CurvedNavigationBarState? navBarState =
+                    final CurvedGradientNavbarState? navBarState =
                         _bottomNavigationKey.currentState;
                     navBarState?.setPage(1);
                   },
