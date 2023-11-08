@@ -119,8 +119,8 @@ class CurvedGradientNavbarState extends State<CurvedGradientNavbar>
                 child: ClipOval(
                   child: DecoratedBox(
                     decoration: BoxDecoration(
-                      color: buttonBackgroundColor || color,
-                      gradient: buttonBackgroundGradient,
+                      color: widget.buttonBackgroundColor ?? widget.color,
+                      gradient: widget.buttonBackgroundGradient,
                     ),
                     child: _icon,
                   ),
