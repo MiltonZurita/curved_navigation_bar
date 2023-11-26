@@ -102,6 +102,18 @@ class CurvedGradientNavbarState extends State<CurvedGradientNavbar>
         alignment: Alignment.bottomCenter,
         children: <Widget>[
           Positioned(
+            left: 0,
+            right: 0,
+            bottom: 0 - (75.0 - widget.height),
+            child: CustomPaint(
+              painter: NavCustomPainter(
+                  _pos, _length, widget.color, Directionality.of(context)),
+              child: Container(
+                height: 75.0,
+              ),
+            ),
+          ),
+          Positioned(
             bottom: -40 - (75.0 - widget.height),
             left: Directionality.of(context) == TextDirection.rtl
                 ? null
@@ -132,18 +144,6 @@ class CurvedGradientNavbarState extends State<CurvedGradientNavbar>
             left: 0,
             right: 0,
             bottom: 0 - (75.0 - widget.height),
-            child: CustomPaint(
-              painter: NavCustomPainter(
-                  _pos, _length, widget.color, Directionality.of(context)),
-              child: Container(
-                height: 75.0,
-              ),
-            ),
-          ),
-          Positioned(
-            left: 0,
-            right: 0,
-            bottom: 0 - (75.0 - widget.height),
             child: SizedBox(
                 height: 100.0,
                 child: Row(
@@ -154,11 +154,18 @@ class CurvedGradientNavbarState extends State<CurvedGradientNavbar>
                     position: _pos,
                     length: _length,
                     index: index,
-                    child: InkWell(
-                        onTap: () => _buttonTap(index),
-                        child: Center(
-                          child: item,
-                        )),
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 15, 0, 0),
+                      child: Material(
+                        color: Colors.transparent,
+                        child: InkWell(
+                          onTap: () => _buttonTap(index),
+                          child: Center(
+                            child: item,
+                          ),
+                        ),
+                      ),
+                    ),
                   );
                 }).toList())),
           ),
